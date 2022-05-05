@@ -2,7 +2,7 @@
 {{- $serviceName := include "grafana.fullname" . }}
 {{- $routePrefix := .Values.routePrefix }}
 {{- $releaseName := .Release.Name }}
-apiVersion: apps/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
 {{- if .Values.ingress.annotations }}
