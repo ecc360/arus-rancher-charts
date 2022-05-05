@@ -1,0 +1,99 @@
+questions:
+# elasticsearch settings
+#- variable: elasticsearch.master.persistence.enabled
+#  default: "true"
+#  description: ""
+#  type: boolean
+#  label: Elasticsearch Master persistence
+#  required: true
+#  group: "elasticsearch"
+- variable: persistence.enabled
+  default: "true"
+  description: ""
+  type: boolean
+  label: Elasticsearch Data persistence
+  required: true
+  group: "opensearch"
+#- variable: elasticsearch.master.replicas
+#  default: 10
+#  description: "Replicas of elasticsearch"
+#  type: int
+#  label: Replicas of elasticsearch
+#  required: true
+#  group: "opensearch"
+#  min: 1
+#  max: 30
+- variable: persistence.size
+  default: "10Gi"
+  description: "Size of persistence"
+  type: string
+  label: Size of Persistence 
+- variable: ingress.enabled
+  default: "true"
+  description: ""
+  type: boolean
+  label: Ingress for opensearch
+  required: true
+  group: "opensearch"
+- variable: esJavaOpts
+  default: "-Djava.net.preferIPv4Stack=true -Xms6g -Xmx6g"
+  description: "Size of memory or JVM options: -Xmx512M -Xms512M"
+  type: string
+  label: JVM Options 
+- variable: resources.requests.memory
+  default: "7Gi"
+  description: "Size of memory for container: 2Gi"
+  type: string
+  label: Container Ram
+- variable: resources.limits.cpu
+  default: "4"
+  description: "Cpu for container: 1"
+  type: string
+  label: Container Cpu
+- variable: securityConfig.enabled
+  default: "true"
+  description: ""
+  type: boolean
+  label: Security for opensearch
+  required: true
+  group: "opensearch"
+  show_subquestion_if: true
+  subquestions:
+  - variable: securityConfig.actionGroupsSecret
+    default: ""
+    description: "actionGroupsSecret"
+    type: string
+    label: Action Groups Secret
+  - variable: securityConfig.internalUsersSecret
+    default: "arus-config"
+    description: "internalUsersSecret"
+    type: string
+    label: Internal Users Secret
+  - variable: securityConfig.rolesSecret
+    default: "arus-config"
+    description: "rolesSecret"
+    type: string
+    label: Roles Secret
+  - variable: securityConfig.rolesMappingSecret
+    default: "arus-config"
+    description: "rolesMappingSecret"
+    type: string
+    label: Roles Mapping Secret
+  - variable: securityConfig.configSecret
+    default: ""
+    description: "configSecret"
+    type: string
+    label: Config Secret
+  - variable: securityConfig.tenantsSecret
+    default: ""
+    description: "tenantsSecret"
+    type: string
+    label: Tenants Secret
+
+#- variable: elasticsearch.client.ingress.enabled
+#  default: "false"
+#  description: ""
+#  type: boolean
+#  label: Ingress for elasticsearch client
+#  required: true
+#  group: "elasticsearch"
